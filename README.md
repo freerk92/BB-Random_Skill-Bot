@@ -17,19 +17,43 @@ the official random skill mechanic:
 The skill tables (`src/main/kotlin/.../skills/SkillTables.kt`) are sourced from the
 BB2025 rulebook via bloodbowlbase.ru and mordorbihan.fr.
 
-This is a skeleton: it doesn't yet implement the "reroll if the player already has
-the skill / can't use it" rule or the optional "roll twice, choose one" advancement
-rule — both are easy to layer on top of `RandomSkillRoller` later.
+Duplicates between the two rolled skills are allowed, per the rules — it's up to
+the coach to reroll if a rolled skill turns out to be one their player already
+has or can't use. The result message has three buttons for that:
+
+- **Reroll #1** / **Reroll #2** — rerolls just that slot
+- **Reroll Both** — rerolls both slots
+
+Only the coach who ran `/randomskill` can use the buttons on their own roll;
+anyone else gets an ephemeral "only the person who rolled these skills can
+reroll them" message. Every reroll edits the original message in place rather
+than posting a new one, and keeps the full history for that slot with earlier
+values struck through, e.g.:
+
+```
+🎲 Random General Skills
+1. ~~Wrestle~~ → ~~Block~~ → Dauntless
+2. Tackle
+
+♻️ Skill #1 rerolled
+```
+
+Session state (which user rolled, and each slot's history) is held in memory,
+keyed by message ID — it does not survive a bot restart, and nothing currently
+evicts old sessions. Fine for a skeleton; worth revisiting with TTL eviction or
+a small DB if the bot runs long-term with heavy use.
 
 ## Project layout
 
 ```
 src/main/kotlin/nl/dictu/bbrandomskillbot/
-  Main.kt                        bot bootstrap, reads token, registers the slash command
-  commands/RandomSkillCommand.kt slash command definition + interaction handling
-  skills/SkillTables.kt          the 6 skill category tables + dice-to-skill lookup
-  skills/RandomSkillRoller.kt    rolls the 4 dice and resolves 2 skills
-src/test/kotlin/...              unit tests for the dice/table logic
+  Main.kt                          bot bootstrap, reads token, registers the slash command
+  commands/RandomSkillCommand.kt   slash command + button interaction handling
+  commands/RollMessageFormatter.kt pure rendering logic for the result embed (unit-tested)
+  session/RollSession.kt           in-memory reroll state, keyed by message ID
+  skills/SkillTables.kt            the 6 skill category tables + dice-to-skill lookup
+  skills/RandomSkillRoller.kt      rolls the dice and resolves skills (full roll or single reroll)
+src/test/kotlin/...                unit tests for the dice/table/message logic
 ```
 
 ## Prerequisites

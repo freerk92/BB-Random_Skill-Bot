@@ -37,4 +37,12 @@ class SkillTablesTest {
             assertTrue(SkillTables.skillsFor(SkillCategory.STRENGTH).contains(roll.skill))
         }
     }
+
+    @Test
+    fun `rollOne produces a single valid skill from the requested category, for use on a reroll`() {
+        val roll = RandomSkillRoller.rollOne(SkillCategory.PASSING, random = kotlin.random.Random(7))
+        assertTrue(roll.firstDie in 1..6)
+        assertTrue(roll.secondDie in 1..6)
+        assertTrue(SkillTables.skillsFor(SkillCategory.PASSING).contains(roll.skill))
+    }
 }
