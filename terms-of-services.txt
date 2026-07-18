@@ -1,0 +1,11 @@
+Terms of Service
+
+Last Updated: July 18, 2026
+
+By using this Discord bot, you agree to these Terms.
+
+- The bot is provided "as is" without any guarantees.
+- The developer may update, suspend, or discontinue the bot at any time.
+- You must use the bot in accordance with Discord's Terms of Service and applicable laws.
+- The developer is not liable for any damages or losses resulting from the use of the bot.
+- Continued use of the bot constitutes acceptance of these Terms.
