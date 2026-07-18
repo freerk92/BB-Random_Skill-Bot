@@ -1,9 +1,9 @@
-package nl.dictu.bbrandomskillbot.commands
+package frl.freerk.bbrandomskillbot.commands
 
-import nl.dictu.bbrandomskillbot.session.RollSession
-import nl.dictu.bbrandomskillbot.session.RollSessionStore
-import nl.dictu.bbrandomskillbot.skills.RandomSkillRoller
-import nl.dictu.bbrandomskillbot.skills.SkillCategory
+import frl.freerk.bbrandomskillbot.session.RollSession
+import frl.freerk.bbrandomskillbot.session.RollSessionStore
+import frl.freerk.bbrandomskillbot.skills.RandomSkillRoller
+import frl.freerk.bbrandomskillbot.skills.SkillCategory
 import net.dv8tion.jda.api.EmbedBuilder
 import net.dv8tion.jda.api.components.actionrow.ActionRow
 import net.dv8tion.jda.api.components.buttons.Button

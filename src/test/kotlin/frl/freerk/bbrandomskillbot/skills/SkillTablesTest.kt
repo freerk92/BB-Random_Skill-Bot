@@ -1,4 +1,4 @@
-package nl.dictu.bbrandomskillbot.skills
+package frl.freerk.bbrandomskillbot.skills
 
 import kotlin.test.Test
 import kotlin.test.assertEquals

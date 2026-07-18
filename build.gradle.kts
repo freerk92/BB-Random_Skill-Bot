@@ -4,7 +4,7 @@ plugins {
     id("com.gradleup.shadow") version "8.3.5"
 }
 
-group = "nl.dictu.bbrandomskillbot"
+group = "frl.freerk.bbrandomskillbot"
 version = "1.0.0"
 
 repositories {
@@ -25,7 +25,7 @@ kotlin {
 }
 
 application {
-    mainClass.set("nl.dictu.bbrandomskillbot.MainKt")
+    mainClass.set("frl.freerk.bbrandomskillbot.MainKt")
 }
 
 tasks.test {

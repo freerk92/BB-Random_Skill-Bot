@@ -1,6 +1,6 @@
-package nl.dictu.bbrandomskillbot.session
+package frl.freerk.bbrandomskillbot.session
 
-import nl.dictu.bbrandomskillbot.skills.SkillCategory
+import frl.freerk.bbrandomskillbot.skills.SkillCategory
 import java.util.concurrent.ConcurrentHashMap
 
 /**

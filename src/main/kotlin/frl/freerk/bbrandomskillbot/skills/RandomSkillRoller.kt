@@ -1,4 +1,4 @@
-package nl.dictu.bbrandomskillbot.skills
+package frl.freerk.bbrandomskillbot.skills
 
 import java.security.SecureRandom
 import kotlin.random.Random

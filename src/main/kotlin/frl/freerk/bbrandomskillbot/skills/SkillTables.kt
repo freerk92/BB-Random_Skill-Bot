@@ -1,4 +1,4 @@
-package nl.dictu.bbrandomskillbot.skills
+package frl.freerk.bbrandomskillbot.skills
 
 /**
  * Skill category, matching the letters used on Blood Bowl 2025 (Season 3 / Third

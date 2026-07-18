@@ -1,6 +1,6 @@
-package nl.dictu.bbrandomskillbot
+package frl.freerk.bbrandomskillbot
 
-import nl.dictu.bbrandomskillbot.commands.RandomSkillCommand
+import frl.freerk.bbrandomskillbot.commands.RandomSkillCommand
 import net.dv8tion.jda.api.JDABuilder
 import net.dv8tion.jda.api.requests.GatewayIntent
 import org.slf4j.LoggerFactory

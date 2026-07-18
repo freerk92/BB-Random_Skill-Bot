@@ -1,4 +1,4 @@
-package nl.dictu.bbrandomskillbot.commands
+package frl.freerk.bbrandomskillbot.commands
 
 /** Which button was pressed on a `/randomskill` result message. */
 enum class RerollAction {

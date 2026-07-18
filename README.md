@@ -46,7 +46,7 @@ a small DB if the bot runs long-term with heavy use.
 ## Project layout
 
 ```
-src/main/kotlin/nl/dictu/bbrandomskillbot/
+src/main/kotlin/frl/freerk/bbrandomskillbot/
   Main.kt                          bot bootstrap, reads token, registers the slash command
   commands/RandomSkillCommand.kt   slash command + button interaction handling
   commands/RollMessageFormatter.kt pure rendering logic for the result embed (unit-tested)
