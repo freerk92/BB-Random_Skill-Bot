@@ -5,6 +5,8 @@ import nl.dictu.bbrandomskillbot.session.RollSessionStore
 import nl.dictu.bbrandomskillbot.skills.RandomSkillRoller
 import nl.dictu.bbrandomskillbot.skills.SkillCategory
 import net.dv8tion.jda.api.EmbedBuilder
+import net.dv8tion.jda.api.components.actionrow.ActionRow
+import net.dv8tion.jda.api.components.buttons.Button
 import net.dv8tion.jda.api.entities.emoji.Emoji
 import net.dv8tion.jda.api.events.interaction.command.SlashCommandInteractionEvent
 import net.dv8tion.jda.api.events.interaction.component.ButtonInteractionEvent
@@ -12,7 +14,6 @@ import net.dv8tion.jda.api.hooks.ListenerAdapter
 import net.dv8tion.jda.api.interactions.commands.OptionType
 import net.dv8tion.jda.api.interactions.commands.build.Commands
 import net.dv8tion.jda.api.interactions.commands.build.OptionData
-import net.dv8tion.jda.api.interactions.components.buttons.Button
 import java.awt.Color
 
 /**
@@ -46,7 +47,7 @@ class RandomSkillCommand : ListenerAdapter() {
                 }
             )
 
-        private fun rerollButtons(): List<Button> = listOf(
+        private fun rerollButtonRow(): ActionRow = ActionRow.of(
             Button.secondary(BUTTON_REROLL_1, "Reroll #1").withEmoji(Emoji.fromUnicode("♻️")),
             Button.secondary(BUTTON_REROLL_2, "Reroll #2").withEmoji(Emoji.fromUnicode("♻️")),
             Button.secondary(BUTTON_REROLL_BOTH, "Reroll Both").withEmoji(Emoji.fromUnicode("♻️")),
@@ -80,7 +81,7 @@ class RandomSkillCommand : ListenerAdapter() {
         val embed = buildEmbed(category, slots, RollMessageFormatter.CHOOSE_PROMPT)
 
         event.replyEmbeds(embed)
-            .addActionRow(rerollButtons())
+            .addComponents(rerollButtonRow())
             .queue { hook ->
                 hook.retrieveOriginal().queue { message ->
                     RollSessionStore.put(message.id, RollSession(category, event.user.id, slots))
@@ -121,7 +122,7 @@ class RandomSkillCommand : ListenerAdapter() {
         }
 
         val embed = buildEmbed(session.category, session.slots, RollMessageFormatter.statusLineFor(action))
-        event.editMessageEmbeds(embed).setActionRow(rerollButtons()).queue()
+        event.editMessageEmbeds(embed).setComponents(rerollButtonRow()).queue()
     }
 
     private fun rerollSlot(session: RollSession, index: Int) {

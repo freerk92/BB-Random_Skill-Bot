@@ -12,7 +12,7 @@ repositories {
 }
 
 dependencies {
-    implementation("net.dv8tion:JDA:6.2.0") {
+    implementation("net.dv8tion:JDA:6.4.2") {
         exclude(module = "opus-java")
     }
     implementation("org.slf4j:slf4j-simple:2.0.16")
